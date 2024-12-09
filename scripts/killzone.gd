@@ -1,10 +1,13 @@
 extends Area2D
 
-@onready var timer = $Timer
+var lastCheckPoint = null
 
 func _on_body_entered(body: Node2D) -> void:
+	if body.name == "Player":
+		lastCheckPoint = body.lastCheckPoint
+		if lastCheckPoint:
+			body.position.x = lastCheckPoint.position.x
+			body.position.y = lastCheckPoint.position.y
 	print("You died!")
-	timer.start()
+	#get_tree().reload_current_scene()
 	
-func _on_timer_timeout() -> void:
-	get_tree().reload_current_scene()

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjt2lkbc5gcf"]
+
+[ext_resource type="Script" path="res://teleporter.gd" id="1_4yoio"]
+[ext_resource type="Texture2D" uid="uid://cbj5xiy65j0t1" path="res://assets/sprites/Stones/2.png" id="2_8xc0e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0xou0"]
+radius = 25.02
+
+[node name="Teleporter" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_4yoio")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0xou0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_8xc0e")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwyfpp4h4m6ft"]
+
+[ext_resource type="Script" path="res://check_point.gd" id="1_dxtyn"]
+[ext_resource type="Texture2D" uid="uid://dxk13ggkr6ng2" path="res://assets/sprites/Stones/1.png" id="2_e1cxc"]
+[ext_resource type="Texture2D" uid="uid://cy0h2atjqp35o" path="res://assets/sprites/Stones/1a.png" id="3_r1e62"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4mrul"]
+radius = 25.02
+
+[node name="CheckPoint" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_dxtyn")
+
+[node name="Inactive" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_e1cxc")
+
+[node name="Active" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_r1e62")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4mrul")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

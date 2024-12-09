@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://di8ffrsljj4pi"]
+[gd_scene load_steps=15 format=3 uid="uid://di8ffrsljj4pi"]
 
 [ext_resource type="PackedScene" uid="uid://s13bcy6d5bu8" path="res://scenes/player.tscn" id="1_ivals"]
 [ext_resource type="Texture2D" uid="uid://cbnjf261wrjmu" path="res://assets/sprites/world_tileset.png" id="2_ftbsc"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://catsoes6okm06" path="res://assets/sprites/Tileset.png" id="3_kfem8"]
 [ext_resource type="PackedScene" uid="uid://btrm0ppusgpph" path="res://scenes/coin.tscn" id="4_4t8ts"]
 [ext_resource type="PackedScene" uid="uid://bhj5k7466upwf" path="res://scenes/killzone.tscn" id="5_xcn17"]
+[ext_resource type="PackedScene" uid="uid://byak14gswojqe" path="res://scenes/enemy.tscn" id="7_n44wd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_832y7"]
 texture = ExtResource("2_ftbsc")
@@ -625,7 +626,7 @@ sources/0 = SubResource("TileSetAtlasSource_832y7")
 sources/1 = SubResource("TileSetAtlasSource_85c3n")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8qw57"]
-distance = -94.0
+distance = -126.0
 
 [sub_resource type="Animation" id="Animation_52ert"]
 length = 2.0
@@ -640,7 +641,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(96, 5), Vector2(192, 5)]
+"values": [Vector2(110, 5), Vector2(180, 5)]
 }
 
 [sub_resource type="Animation" id="Animation_yffet"]
@@ -678,7 +679,7 @@ limit_left = -100
 limit_bottom = 100
 limit_smoothed = true
 position_smoothing_enabled = true
-position_smoothing_speed = 4.0
+position_smoothing_speed = 6.0
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_s73te")
@@ -712,10 +713,13 @@ position = Vector2(40, -9)
 position = Vector2(-25, -13)
 
 [node name="Platform2" parent="Platforms" instance=ExtResource("3_cua0j")]
-position = Vector2(96, 5)
+position = Vector2(110, 5)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms/Platform2"]
 libraries = {
 "": SubResource("AnimationLibrary_djjus")
 }
 autoplay = "RESET"
+
+[node name="Enemy" parent="." instance=ExtResource("7_n44wd")]
+position = Vector2(257, 0)

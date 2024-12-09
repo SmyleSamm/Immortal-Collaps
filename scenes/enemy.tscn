@@ -1,0 +1,94 @@
+[gd_scene load_steps=14 format=3 uid="uid://byak14gswojqe"]
+
+[ext_resource type="Texture2D" uid="uid://cns85bqyh0tqk" path="res://assets/sprites/slime_green.png" id="1_3sjyv"]
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_gh7om"]
+[ext_resource type="PackedScene" uid="uid://bhj5k7466upwf" path="res://scenes/killzone.tscn" id="2_6umci"]
+[ext_resource type="PackedScene" uid="uid://bj25gsrt3x0vt" path="res://scenes/killing_area.tscn" id="4_8y3o3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqyo5"]
+atlas = ExtResource("1_3sjyv")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bl4qw"]
+atlas = ExtResource("1_3sjyv")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6q22"]
+atlas = ExtResource("1_3sjyv")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4ypg"]
+atlas = ExtResource("1_3sjyv")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m44xk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iqyo5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bl4qw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6q22")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4ypg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8mitu"]
+size = Vector2(14, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_by17j"]
+size = Vector2(12, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rijc0"]
+size = Vector2(10, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uh5wd"]
+size = Vector2(10, 4)
+
+[node name="Enemy" type="Node2D"]
+script = ExtResource("1_gh7om")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_m44xk")
+autoplay = "default"
+frame = 2
+frame_progress = 0.651259
+
+[node name="KillzonePlayer" parent="." instance=ExtResource("2_6umci")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillzonePlayer"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_8mitu")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="KillzonePlayer"]
+position = Vector2(0, -4.5)
+shape = SubResource("RectangleShape2D_by17j")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="KillzonePlayer"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_rijc0")
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(-7, -15)
+target_position = Vector2(0, 15)
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(7, -15)
+target_position = Vector2(0, 15)
+
+[node name="KillingArea" parent="." instance=ExtResource("4_8y3o3")]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillingArea"]
+position = Vector2(0, -13)
+shape = SubResource("RectangleShape2D_uh5wd")

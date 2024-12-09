@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdk5lpsab43xp"]
+
+[ext_resource type="Script" path="res://scripts/sign.gd" id="1_cdkx6"]
+[ext_resource type="Texture2D" uid="uid://cbnjf261wrjmu" path="res://assets/sprites/world_tileset.png" id="1_vnjnw"]
+[ext_resource type="FontFile" uid="uid://dtnklu3br6a36" path="res://assets/fonts/PixelOperator8.ttf" id="3_t4f3d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_phdgu"]
+radius = 24.0208
+
+[node name="Sign" type="StaticBody2D"]
+script = ExtResource("1_cdkx6")
+
+[node name="Label" type="Label" parent="."]
+z_index = 1
+offset_left = -61.0
+offset_top = -48.0
+offset_right = 62.0
+offset_bottom = -7.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_t4f3d")
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_vnjnw")
+region_enabled = true
+region_rect = Rect2(128, 48, 16, 16)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_phdgu")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
