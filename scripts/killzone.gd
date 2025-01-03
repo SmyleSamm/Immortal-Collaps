@@ -8,6 +8,6 @@ func _on_body_entered(body: Node2D) -> void:
 		if lastCheckPoint:
 			body.position.x = lastCheckPoint.position.x
 			body.position.y = lastCheckPoint.position.y
-	print("You died!")
-	#get_tree().reload_current_scene()
+		else:
+			get_tree().reload_current_scene()
 	

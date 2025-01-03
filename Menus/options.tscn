@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8nhpqaucl6qg"]
+
+[ext_resource type="FontFile" uid="uid://dtnklu3br6a36" path="res://assets/fonts/PixelOperator8.ttf" id="1_54j8v"]
+[ext_resource type="Script" path="res://Menus/area_2d.gd" id="2_75hsr"]
+
+[node name="Options" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -1)
+zoom = Vector2(4, 4)
+limit_left = -2400
+limit_bottom = 200
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 6.0
+
+[node name="ColorRect2" type="ColorRect" parent="Camera2D"]
+offset_left = -433.0
+offset_top = -242.0
+offset_right = 433.0
+offset_bottom = 243.0
+color = Color(0.0901961, 0.109804, 0.25098, 0.843137)
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D"]
+offset_left = -144.0
+offset_top = -81.0
+offset_right = 144.0
+offset_bottom = 81.0
+color = Color(0.0901961, 0.109804, 0.25098, 1)
+
+[node name="Label" type="Label" parent="Camera2D/ColorRect"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 33.0
+offset_right = 269.0
+offset_bottom = 82.0
+theme_override_fonts/font = ExtResource("1_54j8v")
+theme_override_font_sizes/font_size = 16
+text = "No functionality at the moment!"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Back" type="Button" parent="Camera2D/ColorRect"]
+custom_minimum_size = Vector2(50, 15)
+layout_mode = 0
+offset_left = 119.0
+offset_top = 130.0
+offset_right = 169.0
+offset_bottom = 146.0
+theme_override_fonts/font = ExtResource("1_54j8v")
+theme_override_font_sizes/font_size = 8
+text = "Back"
+script = ExtResource("2_75hsr")
+scene_name = "main_menu"
+
+[connection signal="button_down" from="Camera2D/ColorRect/Back" to="Camera2D/ColorRect/Back" method="_on_button_down"]

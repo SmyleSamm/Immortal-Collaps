@@ -1,0 +1,94 @@
+[gd_scene load_steps=4 format=3 uid="uid://m0e5r1r2forn"]
+
+[ext_resource type="Script" path="res://Menus/area_2d.gd" id="1_2no4o"]
+[ext_resource type="FontFile" uid="uid://dtnklu3br6a36" path="res://assets/fonts/PixelOperator8.ttf" id="2_1qnaj"]
+[ext_resource type="FontFile" uid="uid://dql3ueqlybm1c" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_6dino"]
+
+[node name="MainMenu" type="Node2D"]
+top_level = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -1)
+zoom = Vector2(4, 4)
+limit_left = -2400
+limit_bottom = 200
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 6.0
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = -433.0
+offset_top = -242.0
+offset_right = 433.0
+offset_bottom = 243.0
+color = Color(0.0901961, 0.109804, 0.25098, 0.843137)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -144.0
+offset_top = -82.0
+offset_right = 144.0
+offset_bottom = 80.0
+color = Color(0.0901961, 0.109804, 0.25098, 1)
+
+[node name="Buttons" type="Node" parent="ColorRect"]
+
+[node name="Start" type="Button" parent="ColorRect/Buttons"]
+custom_minimum_size = Vector2(50, 15)
+offset_left = -25.0
+offset_top = -16.0
+offset_right = 25.0
+theme_override_fonts/font = ExtResource("2_1qnaj")
+theme_override_font_sizes/font_size = 8
+text = "Start"
+script = ExtResource("1_2no4o")
+
+[node name="Options" type="Button" parent="ColorRect/Buttons"]
+custom_minimum_size = Vector2(50, 15)
+offset_left = -27.0
+offset_top = 7.0
+offset_right = 27.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("2_1qnaj")
+theme_override_font_sizes/font_size = 8
+text = "Options
+"
+script = ExtResource("1_2no4o")
+scene_name = "options"
+
+[node name="Exit" type="Button" parent="ColorRect/Buttons"]
+custom_minimum_size = Vector2(50, 15)
+offset_left = -25.0
+offset_top = 48.0
+offset_right = 25.0
+offset_bottom = 64.0
+theme_override_fonts/font = ExtResource("2_1qnaj")
+theme_override_font_sizes/font_size = 8
+text = "Exit
+"
+script = ExtResource("1_2no4o")
+scene_name = "EXIT"
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 12.0
+offset_right = 273.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("3_6dino")
+theme_override_font_sizes/font_size = 16
+text = "Immortal Collapse"
+
+[node name="Label2" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 203.0
+offset_top = 153.0
+offset_right = 374.0
+offset_bottom = 202.0
+theme_override_fonts/font = ExtResource("2_1qnaj")
+theme_override_font_sizes/font_size = 8
+text = "by SmyleSamm
+"
+
+[connection signal="button_down" from="ColorRect/Buttons/Start" to="ColorRect/Buttons/Start" method="_on_button_down"]
+[connection signal="button_down" from="ColorRect/Buttons/Options" to="ColorRect/Buttons/Options" method="_on_button_down"]
+[connection signal="button_down" from="ColorRect/Buttons/Exit" to="ColorRect/Buttons/Exit" method="_on_button_down"]
